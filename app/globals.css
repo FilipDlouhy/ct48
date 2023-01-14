@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.globalBackground {
+  background:
+    linear-gradient(
+    130deg ,
+    rgba(171, 17, 51, 1) 30%,
+      rgba(255, 51, 102, 0.75)  
+    ),
+    linear-gradient(
+    200deg ,
+    #AB1133 50%,
+      #FF3366 50% );
+    padding: 0 10rem;
+}
+.blog{
+  width: 700px;
+  height: 500px;
+  margin-bottom: 20px;
+}
+.blogImg{
+  width: 660px;
+  height: 200px;
+}
+.blogText{
+  width: 650px;
+  height: 100px;
+  text-align: center;
+}
+.RecentPosts{
+  height: 400px;
+}
