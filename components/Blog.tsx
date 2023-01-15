@@ -4,7 +4,7 @@ import "../app/globals.css"
 function Blog() {
   return (
     <div className='blog flex flex-col justify-between items-center p-5 rounded bg-white'>
-        <img className=' blogImg rounded-md'></img>
+        <img  src="https://res.cloudinary.com/dnhqwtuev/image/upload/v1673734722/blog/pexels-designecologist-1779487_smp0tr.jpg" className=' blogImg rounded-md'></img>
         <h1 className='font-bold text-2xl'>AUGUSTUS IS A GREATEST CHAD OF CHADS</h1>
         <div className='h-12  flex'>
             <div className='w-64 flex justify-around items-center'>

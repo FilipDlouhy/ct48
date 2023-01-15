@@ -33,3 +33,85 @@
 .RecentPosts{
   height: 400px;
 }
+.Stickman{
+  position: sticky;
+  top: 20px;
+  height: 600px;
+  width: 400px;
+}
+.PostBlogForm{
+  width: 500px;
+  height: 580px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.adminBlog{
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  flex-direction: column;
+}
+.LoginForm{
+  width: 500px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.adminChoose{
+  width: 500px;
+  height: 500px;
+  background:url("./admin.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.reporterChoose{
+  width: 500px;
+  height: 500px;
+  background:url("./reporter.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.adminChoose:hover{
+  transition: 0.2s;
+  width: 520px;
+  height: 520px;
+}
+.reporterChoose:hover{
+  width: 520px;
+  height: 520px;
+  transition: 0.2s;
+}
+.reporterBlog{
+  width: 500px;
+  height: 400px ;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
