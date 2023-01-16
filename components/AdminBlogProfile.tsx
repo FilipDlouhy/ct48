@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-function AdminBlog() {
+function AdminBlogProfile() {
   return (
  
 
-    <Link href="/BlogPageAdmin" className='adminBlog m-5' >
+    <Link href="/BlogPageAdminUser" className='adminBlog m-5' >
       <img className='w-5/6 h-36 '></img>
       <h1 className='text-xl font-bold'>AUGUSTUS CHADUS</h1>
       <div className='flex h-16 w-full'>
@@ -28,4 +28,4 @@ function AdminBlog() {
   )
 }
 
-export default AdminBlog
+export default AdminBlogProfile

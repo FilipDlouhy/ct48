@@ -1,11 +1,11 @@
 import React from 'react'
 import Reporter from '@/components/Reporter'
 import AdminBlog from '@/components/AdminBlog'
-
+import Link from 'next/link'
 function page() {
   return (
     <div>
-      <button className='w-44 h-8 mt-4 font-semibold text-white text-lg rounded-md hover:bg-orange-200 duration-200 hover:text-xl bg-red-300'>Log out</button>
+     <Link href="/Login"><button className='w-44 h-8 mt-4 font-semibold text-white text-lg rounded-md hover:bg-orange-200 duration-200 hover:text-xl bg-red-300'>Log out</button></Link> 
       <h1 className='text-center h-20 flex justify-center items-center text-4xl text-white font-bold'>ČT 48 Administration</h1>
 
       <div className='flex flex-col justify-center items-center mt-10'>

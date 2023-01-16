@@ -1,12 +1,10 @@
 import React from 'react'
-
+import Link from 'next/link'
 function page() {
   return (
     <div className='h-full w-full'>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
-             <button className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Go to Blogs</button>
-
-             <button className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' >Log in</button>
+        <Link href="/Login"><button className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Log in a a Reporter</button></Link>
         </div>
         <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>Sing in to Post Blogs</h1>    
 

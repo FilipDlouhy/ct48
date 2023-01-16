@@ -1,7 +1,7 @@
 import FeaturedBlogs from '@/components/FeaturedBlogs'
 import Blog from '@/components/Blog'
 import RecentPosts from '@/components/RecentPosts'
-import Categories from '@/components/Categories'
+import SmallProfile from '@/components/SmallProfile'
 import Navbar from '@/components/Navbar'
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
 
       <div className='Stickman'>
         <RecentPosts/>
-        <Categories/>
+        <SmallProfile/>
       </div>
     </div>
     </div>
