@@ -1,19 +1,31 @@
+"use client"
+import { BlogContext, User } from '@/models'
+import { useContext, useState,createContext } from 'react'
 import './globals.css'
+import { blogContext } from '@/models'
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  
+
+  const [userId,setUserId] = useState<string|undefined>()
+  const [reporterId,setReporterId] = useState<string|undefined>()
+  const [user,setUser] = useState<User|undefined>()
+  const [reporter,setReporter] = useState<User|undefined>()
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body className='globalBackground'>
-        {children}
-      </body>
-    </html>
+    <blogContext.Provider value={{userId,setUserId,user,setUser,reporterId,setReporterId,reporter,setReporter}}>
+      <html lang="en">
+        {/*
+          <head /> will contain the components returned by the nearest parent
+          head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
+        */}
+        <head />
+        <body className='globalBackground'>
+          {children}
+        </body>
+      </html>
+    </blogContext.Provider> 
   )
 }

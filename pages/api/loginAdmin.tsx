@@ -6,18 +6,25 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    let {name,email,password,userId} = req.body
-
+    let {email,password} = req.body
+    console.log(req.body)
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
-    const users = db.collection("users")
-    const user= await users.findOne({email:email}) 
-    if(user)
+    const reporters = db.collection("reporters")
+    const reporter= await reporters.findOne({email:email,userType:"Reporter"}) 
+    if(reporter)
     {
-      res.json({message:"Email already Registered"})
+      if(reporter.password === password)
+      {
+        res.json(reporter)
+      }
+      else
+      {
+        res.json({message:"Wrong Password"})
+      }
     }
     else{
-      await users.insertOne({ email:email,password:password,name:name,userId:userId}) 
-      res.json({email:email,password:password,name:name,userId:userId})
+        res.json({message:"Email not found"})
+
     }
   }

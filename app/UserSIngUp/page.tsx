@@ -1,13 +1,22 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { User } from '@/models'
+import { BlogContext, User } from '@/models'
 import axios from 'axios'
 import uuid from 'react-uuid'
+import { blogContext } from '@/models'
+import { useRouter } from 'next/navigation';
 function page() {
+    const router = useRouter()
     const [name,setName] = useState<string>()
     const [email,setEmail] = useState<string>()
     const [password,setPassword] = useState<string>()
+    const [error,setError] = useState<string>("Sing Up")
+    const {setUserId} = useContext(blogContext)
+    const {setUser} = useContext(blogContext)
+    useEffect(()=>{
+        setError("Sing Up")
+    },[])
   return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
@@ -16,7 +25,7 @@ function page() {
              <Link  href="/UserLogin" className=' text-center  my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Login</Link>
         </div>
     
-        <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>Sing Up</h1>    
+        <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>{error}</h1>    
 
         <form className='LoginForm'>
             <div className='w-60 h-16 mx-auto my-5 flex flex-col justify-around items-center'>
@@ -46,7 +55,18 @@ function page() {
                     let newUser:User ={
                         name:name,password:password,email:email,userId:userId}
 
-                    axios.post("/api/createUser",newUser)
+                    axios.post("/api/createUser",newUser).then((res)=>{
+                        if(res.data.message === "Email already Registered")
+                        {
+                            setError("Email already Registered")
+                        }
+                        else
+                        {
+                            setUserId(res.data.userId)
+                            setUser({name:name,password:password,email:email,userId:userId})
+                            router.push("/")
+                        }
+                    })
                 }
 
             }} className="w-56 h-10 shadow-md rounded-md text-white font-semibold text-xl cursor-pointer bg-red-400 hover:w-64 duration-200">Sing up</button>

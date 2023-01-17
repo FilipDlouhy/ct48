@@ -72,9 +72,8 @@
   justify-content: space-around;
 }
 .adminChoose{
-  width: 500px;
-  height: 500px;
-  background:url("./admin.png");
+  width: 400px;
+  height: 400px;
   background-repeat: no-repeat;
   background-size:cover;
   background-color: white;
@@ -84,9 +83,8 @@
   cursor: pointer;
 }
 .reporterChoose{
-  width: 500px;
-  height: 500px;
-  background:url("./reporter.png");
+  width: 400px;
+  height: 400px;
   background-repeat: no-repeat;
   background-size:cover;
   background-color: white;
@@ -97,12 +95,12 @@
 }
 .adminChoose:hover{
   transition: 0.2s;
-  width: 520px;
-  height: 520px;
+  width: 420px;
+  height: 420px;
 }
 .reporterChoose:hover{
-  width: 520px;
-  height: 520px;
+  width: 420px;
+  height: 420px;
   transition: 0.2s;
 }
 .reporterBlog{

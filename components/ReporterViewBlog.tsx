@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function ReporterViewBlog() {
@@ -8,8 +9,13 @@ function ReporterViewBlog() {
         <p className='font-bold text-base'>oct 4212365</p>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure eaque amet doloremque! Esse distinctio omnis praesentium sint, at, eius nihil incidunt dicta eaque dolore, odio optio voluptas beatae perferendis temporibus.</p>
         <div className='h-12 w-full flex items-center justify-around'>
-            <button className='w-40 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>See whole blog</button>
-            <button className='w-40 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>Update</button>
+            
+            <Link href="/BlogPageReporterView" className='flex items-center justify-center w-36 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>See whole blog</Link>
+   
+            <button  className='flex items-center justify-center w-36 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>Delete</button>
+
+
+            <Link href="/BlogPageReporterUpdate" className=' flex items-center justify-center w-36 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>Update</Link>
         </div>
 </div>
   )
