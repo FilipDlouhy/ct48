@@ -104,7 +104,7 @@
   transition: 0.2s;
 }
 .reporterBlog{
-  width: 500px;
+  width: 400px;
   height: 400px ;
   display: flex;
   align-items: center;
@@ -130,4 +130,12 @@
 .AdminProfilePageBlog{
   width: 500px;
   height: 400px;
+}
+.wordWrap{
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+.reporterStickman {
+  position: sticky;
+  top:10px
 }

@@ -7,6 +7,15 @@ export type User = {
     password:string,
     email:string
   };
+  export type Blog = {
+    img:string,
+    title:string,
+    text:string,
+    reporterId:string,
+    dateCreatedString:string,
+    dateCreated:number,
+    blogId:string
+  }
   export type BlogContext = {
     userId:string|undefined,
     setUserId:Dispatch<SetStateAction<string|undefined>>,  
@@ -16,6 +25,9 @@ export type User = {
     setReporterId:Dispatch<SetStateAction<string|undefined>>,  
     reporter:User|undefined,
     setReporter:Dispatch<SetStateAction<User|undefined>>,
+    reporterBlogs:Blog[] | undefined,
+    setReporterBlogs:Dispatch<SetStateAction<Blog[] | undefined>>
+
   }
   export const blogContext = createContext<BlogContext>({
     userId:"", // set a default value
@@ -26,4 +38,6 @@ export type User = {
     setReporterId:()=>{},
     reporter:undefined,
     setReporter:()=>{},
+    reporterBlogs:undefined,
+    setReporterBlogs:()=>{}
   })

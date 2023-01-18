@@ -3,11 +3,14 @@ import React, { useContext, useState } from 'react'
 import Link from 'next/link'
 import { Blog, blogContext } from '@/models'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import uuid from 'react-uuid'
 function page() {
     const [img,setImg] = useState<string >()
     const [title,setTitle]= useState<string>()
     const [text,setText]= useState<string>()
     const {reporterId} = useContext(blogContext)
+    const router = useRouter()
     return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
@@ -22,6 +25,7 @@ function page() {
                     m.getUTCFullYear() + "/" +
                     ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
                     ("0" + m.getUTCDate()).slice(-2)
+                    const blogId = uuid()
                 if(img&&title&&text&&reporterId){
                     let newBlog:Blog ={
                         img:img,
@@ -29,11 +33,13 @@ function page() {
                         text:text,
                         reporterId:reporterId,
                         dateCreatedString:dateString,
-                        dateCreated:createdAtNumber
+                        dateCreated:createdAtNumber,
+                        blogId:blogId
                     }
-                    console.log(newBlog)
+                    console.log(blogId)
                 axios.post("/api/createBlog",newBlog)
-                  
+                    
+                router.push("/ReporterView")  
                 }
 
              }} className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Publish  Blog</button>
@@ -47,7 +53,7 @@ function page() {
             <input  onChange={(e)=>{
                 setImg(e.target.value)
             }} className=" w-64 rounded-md  bg-red-400 text-center text-white font-semibold mb-4 cursor-pointer"  type="text"></input>    
-              <img   className='h-2/5 w-11/12'></img>
+              <img src={img}  className='h-2/5 w-11/12'></img>
             <textarea onChange={(e)=>{
                 setTitle(e.target.value)
             }}placeholder='Title' className='w-1/2 text-center h-9 border-2   resize-none my-5 text-2xl font-bold'></textarea>

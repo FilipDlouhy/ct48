@@ -51,6 +51,7 @@ function page() {
                         setReporter(res.data)
                         setReporterId(res.data.userId)
                         router.push("/ReporterView")
+
                     }
                 })
             }} className="w-56 h-10 shadow-md rounded-md text-white font-semibold text-xl cursor-pointer bg-red-400 hover:w-64 duration-200">Login</button>
