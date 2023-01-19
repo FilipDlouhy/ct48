@@ -4,7 +4,7 @@ import { Blog, blogContext } from '@/models'
 import ReporterViewBlog from './ReporterViewBlog'
 import { useState } from 'react'
 interface props {
-    blogs:Blog[]
+    blogs:Blog[]|undefined
 }
 function DsiplayReporterBlogs(props:props) {
     const {reporterId} = useContext(blogContext)
@@ -19,7 +19,7 @@ function DsiplayReporterBlogs(props:props) {
 
     { reporterBlogs?.map((blog:Blog)=>{
         if(blog.reporterId === reporterId){
-            return <ReporterViewBlog img={blog.img} title={blog.title} text={blog.text} reporterId={blog.reporterId} dateCreatedString={blog.dateCreatedString} dateCreated={blog.dateCreated} blogId={blog.blogId}/>
+            return <ReporterViewBlog marked={blog.marked} img={blog.img} title={blog.title} text={blog.text} reporterId={blog.reporterId} dateCreatedString={blog.dateCreatedString} dateCreated={blog.dateCreated} blogId={blog.blogId}/>
         }
 
     })}

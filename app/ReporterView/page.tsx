@@ -13,6 +13,11 @@ const getBlogs = async ()=> {
  async function page() {
 
   const blogs:Blog[] = await getBlogs()
+ 
+    blogs.sort((a,b)=>{
+      return a.dateCreated - b.dateCreated
+      
+    })
   return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>

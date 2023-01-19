@@ -6,13 +6,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    
-    const query = req.query;
-    const { blogId } = query;
+    console.log()
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
-    const blogs = db.collection("blogs")
-    let blog =await blogs.findOne({blogId:blogId})
-    res.json(blog)
+    const reporters = db.collection("reporters")
+    let allReporters =await reporters.find().toArray()
+    res.json(allReporters)
 
   }

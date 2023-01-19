@@ -2,14 +2,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Blog, blogContext } from '@/models'
 interface props {
-    blogs:Blog[]
+    blogs:Blog[]|undefined
 }
 function ReporterStats(props:props) {
     const {reporterId} = useContext(blogContext)
+    const {reporter} = useContext(blogContext)
     const [totalBlogs,setTotalBlogs] = useState<string>()
     useEffect(()=>{
         let count = 0
-        props.blogs.map((blog)=>{
+        props.blogs?.map((blog)=>{
             if(blog.reporterId === reporterId)
             {
                 count++
@@ -25,8 +26,8 @@ function ReporterStats(props:props) {
 
             <p className='text-xl font-bold'>Your stats </p>
             <div className='flex w-full items-center justify-around '>
-                <p className='font-bold'>ALAHSADadadADAS</p>
-                <img className='w-10 h-10 rounded-full'></img>    
+                <p className='font-bold'>{reporter?.name}</p>
+                <img src={reporter?.img} className='w-16 h-16 rounded-full'></img>    
             </div>    
               
             <p className=''>Total Blogs {totalBlogs}</p>

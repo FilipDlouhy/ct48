@@ -2,20 +2,29 @@
 import { useContext, useEffect, useState } from 'react'
 import React from 'react'
 import Link from 'next/link'
-import { blogContext, User } from '@/models'
+import { blogContext, Reporter, User } from '@/models'
 import uuid from 'react-uuid'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 function page() {
-  const createReporter = (name:any,email:any,password:any) =>{
+  const createReporter = (name:any,email:any,password:any,img:any) =>{
     let userId:string = uuid()
-    let newReporter:User = 
+    let date = new Date()
+    let createdAtNumber = date.getTime()
+    var m = new Date();
+    var dateString =
+        m.getUTCFullYear() + "/" +
+        ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+        ("0" + m.getUTCDate()).slice(-2)
+    let newReporter:Reporter = 
     {
       name:name,
       userId:userId,
       password:password,
       email:email,
-
+      img:img,
+      dateCreatedString: dateString,
+      dateCreated: createdAtNumber
     }
     axios.post("/api/createReporter",newReporter).then((res)=>{
       if(res.data.message)
@@ -32,14 +41,19 @@ function page() {
     })
   }
   const {setReporter} = useContext(blogContext)
+  const {setReporterBlogs} = useContext(blogContext)
   const {setReporterId} = useContext(blogContext)
   const router = useRouter()
   const [name,setName] = useState<string|undefined>()
   const [email,setEmail] = useState<string>()
   const [password,setPassword] = useState<string>()
+  const [img,setImg] = useState<string>()
   const [error,setError] = useState<string>("Sing Up Reporter")
   useEffect(()=>{
     setError("Sing Up Reporter")
+    setReporter(undefined)
+    setReporterBlogs(undefined)
+    setReporterId(undefined)
   },[])
   return (
     <div className='h-full w-full'>
@@ -50,7 +64,7 @@ function page() {
         </div>
         <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>{error}</h1>    
 
-        <form className='LoginForm'>
+        <form className='SingUpForm'>
             <div className='w-60 h-16 mx-auto my-5 flex flex-col justify-around items-center'>
                 <label className='text-xl font-semibold'>Reporter Email</label>
                 <input onChange={(e)=>{
@@ -66,6 +80,13 @@ function page() {
             </div>
             
             <div className='w-60 h-16 mx-auto my-5 flex flex-col justify-around items-center'>
+                <label className='text-xl font-semibold'>Reporter Photo Url</label>
+                <input onChange={(e)=>{
+                   setImg(e.target.value)
+                }} className='w-72 h-7 rounded-lg text-center font-semibold bg-red-400 text-white' type="text"></input>
+            </div>
+            
+            <div className='w-60 h-16 mx-auto my-5 flex flex-col justify-around items-center'>
                 <label className='text-xl font-semibold'>Password</label>
                 <input onChange={(e)=>{
                     setPassword(e.target.value)
@@ -73,7 +94,7 @@ function page() {
             </div>
             <button onClick={(e)=>{
               e.preventDefault()
-              createReporter(name,email,password)
+              createReporter(name,email,password,img)
             }} className="w-56 h-10 shadow-md rounded-md text-white font-semibold text-xl cursor-pointer bg-red-400 hover:w-64 duration-200">Sing in</button>
         </form>
 

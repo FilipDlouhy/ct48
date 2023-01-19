@@ -5,11 +5,14 @@ import { Blog, blogContext } from '@/models'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import uuid from 'react-uuid'
+import { arrayBuffer } from 'stream/consumers'
 function page() {
     const [img,setImg] = useState<string >()
     const [title,setTitle]= useState<string>()
     const [text,setText]= useState<string>()
     const {reporterId} = useContext(blogContext)
+    const {setReporterBlogs} = useContext(blogContext)
+    const {reporterBlogs} = useContext(blogContext)
     const router = useRouter()
     return (
     <div>
@@ -34,9 +37,11 @@ function page() {
                         reporterId:reporterId,
                         dateCreatedString:dateString,
                         dateCreated:createdAtNumber,
-                        blogId:blogId
+                        blogId:blogId,
+                        marked:[]
                     }
-                    console.log(blogId)
+
+
                 axios.post("/api/createBlog",newBlog)
                     
                 router.push("/ReporterView")  

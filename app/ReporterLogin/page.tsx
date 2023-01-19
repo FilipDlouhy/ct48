@@ -7,12 +7,16 @@ import { useRouter } from 'next/navigation'
 function page() {
     const router = useRouter()
     const {setReporter} = useContext(blogContext)
+    const {setReporterBlogs} = useContext(blogContext)
     const {setReporterId} = useContext(blogContext)
     const [error,setError] = useState<string>()
     const [email,setEmail] = useState<string>()
     const [password,setPasswrod] = useState<string>()
     useEffect(()=>{
         setError("Login")
+        setReporter(undefined)
+        setReporterBlogs(undefined)
+        setReporterId(undefined)
     },[])
 
   return (

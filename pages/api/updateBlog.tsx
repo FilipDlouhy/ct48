@@ -7,12 +7,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
     
-    const query = req.query;
-    const { blogId } = query;
+    
+    const { img,title,text,reporterId,dateCreatedString,dateCreated,blogId,marked } = req.body;
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
     const blogs = db.collection("blogs")
-    let blog =await blogs.findOne({blogId:blogId})
-    res.json(blog)
+    await blogs.findOneAndDelete({blogId:blogId})
+    await blogs.insertOne({marked:marked, img:img,title:title,text:text,reporterId:reporterId,dateCreatedString:dateCreatedString,dateCreated:dateCreated,blogId:blogId })
+    res.json("updated")
 
   }
