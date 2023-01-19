@@ -41,7 +41,9 @@ export type User = {
     reporterBlogs:Blog[] | undefined,
     setReporterBlogs:Dispatch<SetStateAction<Blog[] | undefined>>
     updatedBlog:Blog | undefined,
-    setUpdatedBlog:Dispatch<SetStateAction<Blog | undefined>>
+    setUpdatedBlog:Dispatch<SetStateAction<Blog | undefined>>,
+    markedBlog:Blog | undefined,
+    setMarkedBlog:Dispatch<SetStateAction<Blog | undefined>>
   }
   export const blogContext = createContext<BlogContext>({
     userId:"", // set a default value
@@ -55,5 +57,7 @@ export type User = {
     reporterBlogs:undefined,
     setReporterBlogs:()=>{},
     updatedBlog:undefined,
-    setUpdatedBlog:()=>{}
+    setUpdatedBlog:()=>{}, 
+    markedBlog:undefined,
+    setMarkedBlog:()=>{}
   })

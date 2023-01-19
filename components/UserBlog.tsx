@@ -4,6 +4,7 @@ import "../app/globals.css"
 import Link from 'next/link'
 import { Blog, blogContext, Reporter } from '@/models'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 interface BlogProps
 {
     reporter:Reporter|undefined,
@@ -14,9 +15,12 @@ function UserBlog(props:BlogProps) {
     function getWordStr(str:string) {
         return str.split(/\s+/).slice(0, 15).join(" ");
         }
+        const router = useRouter()
         const [markded,setMarkded] = useState<boolean>()
         const {user} = useContext(blogContext)
+        const {setMarkedBlog} = useContext(blogContext)
         useEffect(()=>{
+            console.log(props.blog.marked)
             let mark:boolean = false
             props.blog.marked?.map((id)=>{
                 if(id === user?.userId)
@@ -44,6 +48,7 @@ function UserBlog(props:BlogProps) {
                     blogId: props.blog.blogId,
                     marked:arr
                   }
+            
                   axios.post("api/updateBlog",newVersionBlog).then(()=>{
                     setMarkded(true)
                   })
@@ -61,7 +66,7 @@ function UserBlog(props:BlogProps) {
                   })
 
                 }
-          
+
                   let newVersionBlog:Blog={
                     img:props.blog.img,
                     title: props.blog.title,
@@ -72,6 +77,8 @@ function UserBlog(props:BlogProps) {
                     blogId: props.blog.blogId,
                     marked:arr
                   }
+                  
+
                   axios.post("api/updateBlog",newVersionBlog).then(()=>{
                     setMarkded(false)
                   })
@@ -98,7 +105,10 @@ function UserBlog(props:BlogProps) {
             {getWordStr(props.blog.text)}
         </div>
         <div className="flex w-4/5 justify-between items-center ">
-        <Link   href={`/BlogPageUser/${props.blog.blogId}`} className='flex items-center justify-center h-11 cursor-pointer hover:w-52 duration-150 w-48 bg-red-500 font-semibold rounded-xl text-slate-50'>Continue Reading</Link>
+        <button  onClick={()=>{
+          setMarkedBlog(props.blog)
+          router.push("/BlogPageUser")
+        }} className='flex items-center justify-center h-11 cursor-pointer hover:w-52 duration-150 w-48 bg-red-500 font-semibold rounded-xl text-slate-50'>Continue Reading</button>
       { user&& <button onClick={()=>{markded ? markUnmarkUserBlog(false):markUnmarkUserBlog(true) }} className={markded ? 'h-11 cursor-pointer hover:w-52 duration-150 w-48 bg-white font-semibold rounded-xl text-black':'h-11 cursor-pointer hover:w-52 duration-150 w-48 bg-yellow-300 font-semibold rounded-xl text-white' }>{markded ? "Unmark" : "Mark as Favorite"}</button>}
 
 

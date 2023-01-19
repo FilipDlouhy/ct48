@@ -20,6 +20,7 @@ const getBlogs = async ()=> {
 
 export default async function Home() {
   const userBlogs = await getBlogs()
+  console.log(userBlogs)
   const reporters = await getReporters()
   userBlogs.sort((a,b)=>{
     return a.dateCreated - b.dateCreated
