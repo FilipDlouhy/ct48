@@ -15,7 +15,7 @@ function page() {
     return (
     <div>
         <Navbar />  
-        <div className='w-full h-11 mt-8 flex items-center justify-between '>
+        <div className='w-full h-11 mt -8 flex items-center justify-between '>
           <button onClick={()=>{router.push("/")}} className='flex justify-center items-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Go to your Blogs</button>
           {markedBlog && <MarkUnmarkButton blog={markedBlog}/>}
 

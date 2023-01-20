@@ -1,5 +1,6 @@
+"use client"
 import { Blog, Reporter } from '@/models'
-import React from 'react'
+import React,{useEffect} from 'react'
 import UserBlog from './UserBlog'
 
 interface Props {
@@ -8,7 +9,10 @@ interface Props {
 }
 
 function DisplayUserBlogs(props:Props) {
-  return (
+  useEffect(()=>{
+    console.log(props.userBlogs)
+  })
+   return (
     <div>
 
         {props.userBlogs.map((blog)=>{

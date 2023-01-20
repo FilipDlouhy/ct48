@@ -20,7 +20,6 @@ const getBlogs = async ()=> {
 
 export default async function Home() {
   const userBlogs = await getBlogs()
-  console.log(userBlogs)
   const reporters = await getReporters()
   userBlogs.sort((a,b)=>{
     return a.dateCreated - b.dateCreated
@@ -28,9 +27,9 @@ export default async function Home() {
 
   return (
     <div className=''>
-          <Navbar/>  
+        <Navbar/>  
 
-          <FeaturedBlogs/>
+        <FeaturedBlogs userBlogs={userBlogs} reporters={reporters}/>
     <div className='w-full flex justify-between'>
 
 

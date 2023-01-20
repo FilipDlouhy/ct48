@@ -20,7 +20,6 @@ function UserBlog(props:BlogProps) {
         const {user} = useContext(blogContext)
         const {setMarkedBlog} = useContext(blogContext)
         useEffect(()=>{
-            console.log(props.blog.marked)
             let mark:boolean = false
             props.blog.marked?.map((id)=>{
                 if(id === user?.userId)
