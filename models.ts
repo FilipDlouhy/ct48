@@ -7,6 +7,11 @@ export type User = {
     password:string,
     email:string,
   };
+  export type blogAndReporter = {
+    blog:Blog,
+    reporter:Reporter
+  }
+
   export type Reporter = {
     name: string;
     userId:string,
@@ -26,6 +31,7 @@ export type User = {
     dateCreated:number,
     blogId:string,
     marked:string[]|undefined,
+    category:string
 
   }
 
@@ -42,8 +48,13 @@ export type User = {
     setReporterBlogs:Dispatch<SetStateAction<Blog[] | undefined>>
     updatedBlog:Blog | undefined,
     setUpdatedBlog:Dispatch<SetStateAction<Blog | undefined>>,
-    markedBlog:Blog | undefined,
-    setMarkedBlog:Dispatch<SetStateAction<Blog | undefined>>
+    markedBlog:blogAndReporter | undefined,
+    setMarkedBlog:Dispatch<SetStateAction<blogAndReporter | undefined>>,
+    blogs:blogAndReporter[] | undefined,
+    setBlogs:Dispatch<SetStateAction<blogAndReporter[] | undefined>>,
+    category:string|undefined,
+    setCategory:Dispatch<SetStateAction<string|undefined>>, 
+
   }
   export const blogContext = createContext<BlogContext>({
     userId:"", // set a default value
@@ -59,5 +70,10 @@ export type User = {
     updatedBlog:undefined,
     setUpdatedBlog:()=>{}, 
     markedBlog:undefined,
-    setMarkedBlog:()=>{}
+    setMarkedBlog:()=>{},
+    blogs:undefined,
+    setBlogs:()=>{},   
+    category:"", // set a default value
+    setCategory: () => {},
+  
   })

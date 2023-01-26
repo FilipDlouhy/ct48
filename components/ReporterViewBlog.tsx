@@ -53,7 +53,8 @@ function ReporterViewBlog(props: Blog ) {
                 dateCreatedString: props.dateCreatedString,
                 dateCreated: props.dateCreated,
                 blogId: props.blogId,
-                marked:props.marked
+                marked:props.marked,
+                category:props.category
                 }
              setUpdatedBlog(newBlog) 
              router.push("/BlogPageReporterUpdate")

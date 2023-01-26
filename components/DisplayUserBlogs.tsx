@@ -1,30 +1,32 @@
 "use client"
-import { Blog, Reporter } from '@/models'
-import React,{useEffect} from 'react'
+import { Blog, blogAndReporter, blogContext, Reporter } from '@/models'
+import React,{useEffect,useContext} from 'react'
 import UserBlog from './UserBlog'
 
 interface Props {
-    userBlogs:Blog[],
-    reporters:Reporter[]
+ blogs:blogAndReporter[]
 }
 
 function DisplayUserBlogs(props:Props) {
-  useEffect(()=>{
-    console.log(props.userBlogs)
-  })
+  const {category} = useContext(blogContext)
+  function renderBlogs (category:string|undefined) {
+    if(category === "all") {
+      return props.blogs?.map((blog)=>{
+        return <UserBlog blog={blog.blog} reporter={blog.reporter} />
+      });
+    } else {
+      return props.blogs?.map((blog)=>{
+        if(category === blog.blog.category) {
+          return <UserBlog blog={blog.blog} reporter={blog.reporter} />
+        }
+      });
+    }
+  }
+  
    return (
     <div>
 
-        {props.userBlogs.map((blog)=>{
-            let blogReporter:Reporter|undefined 
-            props.reporters.map((reporter)=>{
-                if(blog.reporterId === reporter.userId)
-                {
-                    blogReporter = reporter
-                }
-            })
-            return <UserBlog blog={blog} reporter={blogReporter} />
-        })}
+        {renderBlogs(category)}
 
     </div>
   )

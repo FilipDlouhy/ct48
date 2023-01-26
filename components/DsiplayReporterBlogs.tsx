@@ -12,14 +12,14 @@ function DsiplayReporterBlogs(props:props) {
     const {reporterBlogs} = useContext(blogContext)
     useEffect(()=>{
       setReporterBlogs(props.blogs)
-    })
+    },[])
 
   return (
     <div className='w-5/6 flex flex-wrap '>
 
     { reporterBlogs?.map((blog:Blog)=>{
         if(blog.reporterId === reporterId){
-            return <ReporterViewBlog marked={blog.marked} img={blog.img} title={blog.title} text={blog.text} reporterId={blog.reporterId} dateCreatedString={blog.dateCreatedString} dateCreated={blog.dateCreated} blogId={blog.blogId}/>
+            return <ReporterViewBlog category={blog.category} marked={blog.marked} img={blog.img} title={blog.title} text={blog.text} reporterId={blog.reporterId} dateCreatedString={blog.dateCreatedString} dateCreated={blog.dateCreated} blogId={blog.blogId}/>
         }
 
     })}

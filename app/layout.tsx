@@ -1,5 +1,5 @@
 "use client"
-import { Blog, BlogContext, User ,Reporter} from '@/models'
+import { Blog, BlogContext, User ,Reporter,blogAndReporter} from '@/models'
 import { useContext, useState,createContext } from 'react'
 import './globals.css'
 import { blogContext } from '@/models'
@@ -16,9 +16,14 @@ export default function RootLayout({
   const [reporter,setReporter] = useState<Reporter|undefined>()
   const [reporterBlogs,setReporterBlogs] = useState<Blog[]|undefined>()
   const [updatedBlog,setUpdatedBlog] = useState<Blog|undefined>()
-  const [markedBlog,setMarkedBlog] = useState<Blog|undefined>()
+  const [markedBlog,setMarkedBlog] = useState<blogAndReporter|undefined>()
+  const [blogs,setBlogs] = useState<blogAndReporter[]|undefined>()
+  const [category,setCategory] = useState<string>()
+ 
+
+
   return (
-    <blogContext.Provider value={{markedBlog,setMarkedBlog,userId,setUserId,user,setUser,reporterId,setReporterId,reporter,setReporter,reporterBlogs,setReporterBlogs,updatedBlog,setUpdatedBlog}}>
+    <blogContext.Provider value={{category,setCategory,blogs,setBlogs,markedBlog,setMarkedBlog,userId,setUserId,user,setUser,reporterId,setReporterId,reporter,setReporter,reporterBlogs,setReporterBlogs,updatedBlog,setUpdatedBlog}}>
       <html lang="en">
         {/*
           <head /> will contain the components returned by the nearest parent

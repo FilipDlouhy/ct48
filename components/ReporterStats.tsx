@@ -17,7 +17,7 @@ function ReporterStats(props:props) {
             }
         })
         setTotalBlogs(count.toString())
-    })
+    },[])
 
 
   return (

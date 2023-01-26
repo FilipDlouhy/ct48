@@ -1,7 +1,41 @@
-import React from 'react'
+"use client"
+import { Blog, blogContext, Reporter } from '@/models'
+import React,{useEffect,useState,useContext} from 'react'
 import RecentPost from './RecentPost'
+import { blogAndReporter } from '@/models' 
 
-function RecentPosts() {
+interface props {
+blogs:blogAndReporter[]
+}
+
+function RecentPosts(props:props) {
+  const [blogs,setBlogs] = useState<blogAndReporter[]>()
+  const {category} = useContext(blogContext)
+  function renderBlogs (category:string|undefined) {
+    if(category === "all") {
+      return props.blogs?.map((blog)=>{
+        return <RecentPost props={blog}/>
+      });
+    } else {
+      return props.blogs?.map((blog)=>{
+        if(category === blog.blog.category) {
+          return <RecentPost props={blog}/>
+        }
+      });
+    }
+  }
+  useEffect(()=>{
+    let count = 1
+    let arr:blogAndReporter[] = []
+    props.blogs?.map((blog)=>{
+      if(count < 4 )
+       {
+        arr.push(blog)
+       }
+       count++
+      })
+    setBlogs(arr)
+  },[])
   return (
     <div className='  w-96 h-72 bg-white rounded-lg'>
         
@@ -9,10 +43,8 @@ function RecentPosts() {
             <h1 className='font-bold text-xl'>Recent Posts</h1>
         </div>
 
-        <div className='w-full py-5 h-80'>
-            <RecentPost/>
-            <RecentPost/>
-            <RecentPost/>
+        <div className='w-full py-3 h-80'>
+            {renderBlogs(category)}
         </div>
     </div>
   )

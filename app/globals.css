@@ -150,3 +150,15 @@
   position: sticky;
   top:10px
 }
+.UserPageProfileLeft {
+  width: 400px;
+  height: 500px;
+  position: sticky;
+  top: 20px;
+}
+.search{
+  height: 200px;
+  position: absolute;
+  top: 3.4rem;
+  left:20.4rem;
+}
