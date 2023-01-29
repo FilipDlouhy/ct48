@@ -14,11 +14,6 @@ function page() {
   const {user} = useContext(blogContext)
   const {blogs} = useContext(blogContext)
   const {setMarkedBlog} = useContext(blogContext)
-  useEffect(()=>{
-      blogs?.map((blog)=>{
-        console.log(blog.blog.marked)
-      })
-  },[])
     return (
     <div>
         <Navbar />  
@@ -40,9 +35,9 @@ function page() {
 
               <Link onClick={()=>{
                 setMarkedBlog(markedBlog)
-              }} href={"/UserReporterPage"} className='h-16 w-96 bg-red-200 text-white font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-black duration-300  flex justify-around items-center'>
-                  <p>Wrote by:{markedBlog?.reporter.name}</p>
-                  <img src={markedBlog?.reporter.img} className='w-14 h-14 rounded-full'></img>
+              }} href={"/UserReporterPage"} className='h-16 w-72 xs:w-96 bg-red-200 text-white font-semibold rounded-xl cursor-pointer hover:bg-white hover:text-black duration-300  flex justify-around items-center'>
+                  <p>Wrote by:{markedBlog?.reporter?.name}</p>
+                  <img src={markedBlog?.reporter?.img} className='w-14 h-14 rounded-full'></img>
               </Link>
         </div>
     </div>

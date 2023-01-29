@@ -10,21 +10,22 @@ export default async function handler(
     console.log(req.body)
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
-    const reporters = db.collection("reporters")
-    const reporter= await reporters.findOne({email:email,userType:"Reporter"}) 
-    if(reporter)
-    {
-      if(reporter.password === password)
+    const admins = db.collection("admin")
+    const admin= await admins.findOne({email:email}) 
+      if(admin)
       {
-        res.json(reporter)
+        if(admin.password === password)
+        {
+          res.json(admin)
+        }
+        else
+        {
+          res.json({message:"Wrong Password"})
+          console.log(admin)
+        }
       }
-      else
-      {
-        res.json({message:"Wrong Password"})
-      }
-    }
-    else{
-        res.json({message:"Email not found"})
+      else{
+          res.json({message:"Email not found"})
 
-    }
+      }
   }

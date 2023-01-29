@@ -25,7 +25,7 @@ function ReporterViewBlog(props: Blog ) {
         <h1 className='text-base font-bold'>{props.title}</h1>
         <p className='font-bold text-base'>{props.dateCreatedString}</p>
         <p className='w-full h-8 wordWrap text-center'>{getWordStr(props.text)}</p>
-        <div className='h-16 w-full flex flex-wrap items-center justify-around'>
+        <div className=' h-36 lg:h-16 w-full flex flex-wrap items-center justify-around'>
             
             <Link href={`/BlogPageReporterView/${props.blogId}`} className=' m-1 flex items-center justify-center w-36 h-8 bg-red-500 rounded-lg text-white font-semibold cursor-pointer hover:bg-orange-400 duration-200 '>See whole blog</Link>
    

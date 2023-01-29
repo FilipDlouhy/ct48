@@ -17,9 +17,8 @@ function page() {
   return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
-             <Link href="/" className='text-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Go Back</Link>
+             <Link href="/AdministrationLogin" className='text-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Go Back</Link>
 
-             <Link href="/UserSIngUp" className='text-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Sing in new User</Link>
         </div>
     
         <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>{error}</h1>    
@@ -38,15 +37,15 @@ function page() {
             </div>
             <button onClick={(e)=>{
               e.preventDefault()
-              axios.post("/api/loginUser",{password,email}).then((res)=>{
+              axios.post("/api/loginAdmin",{password,email}).then((res)=>{
                 if(res.data.message)
                 {
-                  setError(res.data.message)
+                  setError(res.data.message) 
                 }
                 else
                 {
 
-                  router.push("/")
+                  router.push("/AdminView")
                 }
               })
             }}  className="w-56 h-10 shadow-md rounded-md text-white font-semibold text-xl cursor-pointer bg-red-400 hover:w-64 duration-200">Login</button>

@@ -7,7 +7,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
     let {reporterId} = req.body
-    console.log()
+    console.log("reporterId")
+
+    console.log(req.body)
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
     const blogs = db.collection("blogs")

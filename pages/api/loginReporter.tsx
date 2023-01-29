@@ -11,9 +11,10 @@ export default async function handler(
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
     const reporters = db.collection("reporters")
-    const reporter= await reporters.findOne({email:email,userType:"Reporter"}) 
+    const reporter= await reporters.findOne({email:email}) 
     if(reporter)
     {
+
       if(reporter.password === password)
       {
         res.json(reporter)

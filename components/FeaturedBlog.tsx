@@ -9,12 +9,10 @@ blog:blogAndReporter
 }
 function FeaturedBlog(props:props) {
   const {setMarkedBlog} = useContext(blogContext)
-  const {setReporter} = useContext(blogContext)
 
   return (
     <Link href={"/BlogPageUser"} onClick={()=>{
-          setMarkedBlog(props.blog.blog)
-          setReporter(props.blog.reporter)
+          setMarkedBlog(props.blog)
     }} className='h-52 cursor-pointer hover:w-56 duration-300 bg-red-300 hover:mr-1 ml-5 mr-5 w-52 text-white  flex flex-col items-center justify-between px-6 py-6 rounded shadow-md'>
         <p className='font-bold'>{props.blog?.blog?.dateCreatedString}</p>
         <h1 className='font-bold text-lg'>{props.blog.blog?.title}</h1>   

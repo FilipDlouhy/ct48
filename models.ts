@@ -20,6 +20,7 @@ export type User = {
     img:string,
     dateCreatedString:string,
     dateCreated:number,
+    banned:boolean
 
   };
   export type Blog = {
@@ -54,7 +55,10 @@ export type User = {
     setBlogs:Dispatch<SetStateAction<blogAndReporter[] | undefined>>,
     category:string|undefined,
     setCategory:Dispatch<SetStateAction<string|undefined>>, 
-
+    search:string|undefined,
+    setSearch:Dispatch<SetStateAction<string|undefined>>, 
+    showSearch:boolean | undefined,
+    setShowSearch: Dispatch<SetStateAction<boolean | undefined>>, 
   }
   export const blogContext = createContext<BlogContext>({
     userId:"", // set a default value
@@ -75,5 +79,8 @@ export type User = {
     setBlogs:()=>{},   
     category:"", // set a default value
     setCategory: () => {},
-  
+    search:"", // set a default value
+    setSearch: () => {},
+    showSearch:undefined,
+    setShowSearch:() =>{},
   })

@@ -26,10 +26,11 @@ export default async function Home() {
     return a.dateCreated - b.dateCreated
   }).map((blog)=>{
       reporters.map((reporter)=>{
-        if(reporter.userId === blog.reporterId)
-        {
-          arr.push({blog,reporter})
+        if(reporter.banned === false && reporter.userId === blog.reporterId)
+        {;
+          arr.push({blog,reporter});
         }
+
     })
   })
   return (

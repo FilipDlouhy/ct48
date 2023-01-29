@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    let {name,email,password,userId,img,dateCreatedString,dateCreated} = req.body
+    let {name,email,password,userId,img,dateCreatedString,dateCreated,banned} = req.body
 
     const client = MongoClient.connect("mongodb+srv://Augustus:Filipovoheslo1@cluster0.pwpm4qt.mongodb.net/Blogs?retryWrites=true&w=majority")        
     const db = (await client).db()
@@ -17,8 +17,8 @@ export default async function handler(
       res.json({message:"Email already Registered"})
     }
     else{
-      await reporters.insertOne({ email:email,password:password,name:name,userId:userId,img:img}) 
+      await reporters.insertOne({ email:email,password:password,name:name,userId:userId,img:img,dateCreatedString:dateCreatedString,dateCreated:dateCreated,banned:banned}) 
       
-      res.json({email:email,password:password,name:name,userId:userId,img:img,dateCreatedString:dateCreatedString,dateCreated:dateCreated})
+      res.json({email:email,password:password,name:name,userId:userId,img:img,dateCreatedString:dateCreatedString,dateCreated:dateCreated,banned:banned})
     }
   }

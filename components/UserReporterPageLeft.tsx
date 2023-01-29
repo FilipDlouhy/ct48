@@ -5,7 +5,7 @@ import React,{useContext} from 'react'
 function UserProfilePageLeft() {
   const {markedBlog} = useContext(blogContext)
   return (
-    <div className='UserPageProfileLeft bg-white  py-5 my-14 rounded-lg'>
+    <div className=' md:UserPageProfileLeft bg-white  py-5 my-14 rounded-lg'>
 
         <div className='w-full flex flex-col items-center justify-around h-1/2'>
 

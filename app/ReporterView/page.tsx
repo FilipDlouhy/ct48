@@ -21,11 +21,11 @@ const getBlogs = async ()=> {
   return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
-             <Link href= "/ReporterSingIn" className=' flex items-center justify-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer'
+             <Link href= "/ReporterSingIn" className='text-center my-6 w-40 flex items justify-center  sm:w-52 h-8 text-sm text-white bg-red-400 sm:text-lg font-semibold   hover:w-44 rounded-lg sm:hover:w-64 duration-300 cursor-pointer'
             > Log Out</Link>
 
       
-             <Link href="/CreateBlog" className=' flex items-center justify-center my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' >Create New Blog</Link>
+             <Link href="/CreateBlog" className='text-center my-6 w-40 flex items justify-center  sm:w-52 h-8 text-sm text-white bg-red-400 sm:text-lg font-semibold   hover:w-44 rounded-lg sm:hover:w-64 duration-300 cursor-pointer' >Create New Blog</Link>
         </div>
         <h1 className='text-center h-20 flex justify-center items-center text-4xl text-white font-bold'>Your Blogs </h1>
 
@@ -34,9 +34,9 @@ const getBlogs = async ()=> {
 
       
 
-        <div className='w-full h-full flex'>
-          <DsiplayReporterBlogs blogs={blogs}/>
+        <div className='w-full h-full flex flex-col lg:flex-row-reverse'>
           <ReporterStats blogs={blogs}/>
+          <DsiplayReporterBlogs blogs={blogs}/>
         </div>
 
 

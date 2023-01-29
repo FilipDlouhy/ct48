@@ -22,9 +22,9 @@ function page() {
   return (
     <div>
         <div className='w-full h-11 mt-8 flex items-center justify-between '>
-            <Link href="/AdministrationLogin"><button className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' >Go Back</button></Link>
+            <Link href="/AdministrationLogin"><button className='text-center my-6 w-40 flex items justify-center  sm:w-52 h-8 text-sm text-white bg-red-400 sm:text-lg font-semibold   hover:w-44 rounded-lg sm:hover:w-64 duration-300 cursor-pointer' >Go Back</button></Link>
 
-            <Link href="/ReporterSingIn"><button className='my-6 w-52 h-8 text-white bg-red-400 text-lg font-semibold    rounded-lg hover:w-64 duration-300 cursor-pointer' > Sing in new Reporter</button></Link>
+            <Link href="/ReporterSingIn"><button className='text-center my-6 w-40 flex items justify-center  sm:w-52 h-8 text-sm text-white bg-red-400 sm:text-lg font-semibold   hover:w-44 rounded-lg sm:hover:w-64 duration-300 cursor-pointer' > Sing in new Reporter</button></Link>
         </div>
     
         <h1 className='text-center mx-auto my-8 text-2xl text-emerald-50 font-bold'>{error}</h1>    

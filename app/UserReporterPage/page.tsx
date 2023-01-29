@@ -14,7 +14,7 @@ import React from 'react'
          </div>
 
 
-        <div className='w-full h-full flex justify-between items-start'>
+        <div className='w-full h-full flex-col md:flex-row flex justify-between items-center md:items-start'>
 
             <UserProfilePageLeft/>
             <UserReporterPageRight/>

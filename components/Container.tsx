@@ -14,6 +14,8 @@ function Container(props:props) {
     const {setBlogs} = useContext(blogContext)
     const {blogs} = useContext(blogContext)
     const {setCategory} = useContext(blogContext)
+    const {showSearch} = useContext(blogContext)
+    const {setShowSearch} = useContext(blogContext)
     useEffect(()=>{
       if(blogs === undefined){
         setBlogs(props.blogsAndReporters)
@@ -22,23 +24,24 @@ function Container(props:props) {
     },[])  
 
   return (
-    <div className=''>
+    <div onClick={()=>{setShowSearch(false)
+    console.log(showSearch)}} className=''>
     <Navbar/>  
 
     { blogs&& <FeaturedBlogs blogs={blogs}/>}
 
-      <div className='w-full flex justify-between'>
+      <div className='w-full flex items-center flex-col-reverse 2xl:flex-row 2xl:justify-between '>
 
 
         { blogs&& <DisplayUserBlogs blogs={blogs} />}
 
-        <div className='Stickman'>
+        <div className='my-10 2xl:Stickman'>
             { blogs && <RecentPosts  blogs={blogs} />}
             { blogs && <SmallProfile/>}
         </div>
       </div>
 
-      <Search/>
+      {showSearch && <Search/>}
     </div>
   )
 }

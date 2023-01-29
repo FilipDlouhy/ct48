@@ -13,11 +13,11 @@ function RecentPosts(props:props) {
   const {category} = useContext(blogContext)
   function renderBlogs (category:string|undefined) {
     if(category === "all") {
-      return props.blogs?.map((blog)=>{
+      return blogs?.map((blog)=>{
         return <RecentPost props={blog}/>
       });
     } else {
-      return props.blogs?.map((blog)=>{
+      return blogs?.map((blog)=>{
         if(category === blog.blog.category) {
           return <RecentPost props={blog}/>
         }
@@ -28,11 +28,12 @@ function RecentPosts(props:props) {
     let count = 1
     let arr:blogAndReporter[] = []
     props.blogs?.map((blog)=>{
-      if(count < 4 )
+      if(count < 3 )
        {
         arr.push(blog)
+        count++
        }
-       count++
+
       })
     setBlogs(arr)
   },[])

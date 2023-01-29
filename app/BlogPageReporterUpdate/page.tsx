@@ -32,7 +32,8 @@ function page() {
                   dateCreatedString: updatedBlog.dateCreatedString,
                   dateCreated: updatedBlog.dateCreated,
                   blogId: updatedBlog.blogId,
-                  marked:updatedBlog.marked
+                  marked:updatedBlog.marked,
+                  category:"all"
                 }
                 axios.post("api/updateBlog",newVersionBlog).then(()=>{
                 router.push("/ReporterView")

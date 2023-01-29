@@ -24,7 +24,8 @@ function page() {
       email:email,
       img:img,
       dateCreatedString: dateString,
-      dateCreated: createdAtNumber
+      dateCreated: createdAtNumber,
+      banned:false
     }
     axios.post("/api/createReporter",newReporter).then((res)=>{
       if(res.data.message)

@@ -19,11 +19,12 @@ export default function RootLayout({
   const [markedBlog,setMarkedBlog] = useState<blogAndReporter|undefined>()
   const [blogs,setBlogs] = useState<blogAndReporter[]|undefined>()
   const [category,setCategory] = useState<string>()
- 
+  const [search,setSearch] = useState<string|undefined>()
+  const [showSearch,setShowSearch] = useState<boolean|undefined>(false)
 
 
   return (
-    <blogContext.Provider value={{category,setCategory,blogs,setBlogs,markedBlog,setMarkedBlog,userId,setUserId,user,setUser,reporterId,setReporterId,reporter,setReporter,reporterBlogs,setReporterBlogs,updatedBlog,setUpdatedBlog}}>
+    <blogContext.Provider value={{showSearch,setShowSearch,search,setSearch,category,setCategory,blogs,setBlogs,markedBlog,setMarkedBlog,userId,setUserId,user,setUser,reporterId,setReporterId,reporter,setReporter,reporterBlogs,setReporterBlogs,updatedBlog,setUpdatedBlog}}>
       <html lang="en">
         {/*
           <head /> will contain the components returned by the nearest parent
